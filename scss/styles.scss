@@ -23,6 +23,7 @@ body {
 .headerContent {
   @extend %headerFont;
   text-align: center;
+  margin-top: 10%;
 }
 
 .submitBtn {
@@ -38,6 +39,16 @@ body {
   display: block;
   margin: 0 auto;
   margin-top: 4%;
+  transition: all 300ms linear;
+  border: 2px solid transparent;
+  &:hover {
+    background-color: white;
+    color: $primary;
+    border: 2px solid $primary;
+  }
+  &:focus {
+    outline: none !important;
+  }
 }
 
 #githubSearch {
@@ -74,13 +85,20 @@ ul {
   list-style-type: none;
   width: 100%;
   border-radius: 10px;
+  .resultsItem {
+    margin: 0;
+    border-bottom: 1px solid $primary;
+    padding-bottom: 20px;
+    border-radius: 0;
+    li:first-child {
+      line-height: 0px;
+    }
+  }
   li {
-      width: 100%;
+    width: 100%;
     font-size: 15px;
-    line-height: 30px;
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid $primary;
+    line-height: 40px;
+    margin-bottom: 10px;
     .fullName {
       text-transform: capitalize;
       font-size: 16px;
@@ -89,10 +107,12 @@ ul {
     }
     .button {
       border: 2px solid $primary;
-      padding: 3px 10px;
+      padding: 5px 50px;
       color: $primary;
       text-decoration: none;
+      transition: all 300ms linear;
       &:hover {
+        transform: scale(1.5);
         background-color: $primary;
         color: white;
       }

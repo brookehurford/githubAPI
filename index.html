@@ -18,12 +18,14 @@
       <hr>
       <form id="githubSearch" autocomplete="off">
         <label for="username">Username</label>
-        <input id="username" type="text" placeholder="Ex: brookehurford">
+        <input id="username" type="text" placeholder="Ex: brookehurford" required>
         <button class="submitBtn" type="submit" name="button">Search</button>
       </form>
       <div id="searchResults">
-        <ul class="resultsList"></ul>
+        <ul class="resultsList">
+        </ul>
       </div>
+      <div class="error"></div>
     </div>
   </body>
 </html>
