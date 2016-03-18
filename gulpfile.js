@@ -90,7 +90,7 @@ gulp.task('serve', function() {
   });
   gulp.watch(['js/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
-  gulp.watch("scss/*/*.scss", ['CSSBuild']);
+  gulp.watch("scss/*.scss", ['CSSBuild']);
   gulp.watch(['index.html'], ['HTMLBuild']);
 });
 

@@ -8,7 +8,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 
 #githubSearch {
@@ -28,5 +27,16 @@ body {
     display: block;
     margin: 0 auto;
     margin-top: 4%;
+  }
+}
+
+li {
+  font-size: 15px;
+  line-height: 25px;
+  .fullName {
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 }

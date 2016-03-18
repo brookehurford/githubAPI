@@ -7,3 +7,7 @@ $(document).ready(function() {
     var newRepo = new getRepos();
   })
 });
+
+// for (var 0 = i; i > response.length; i++){
+//   $('#searchResults').append(response[i].description);
+// }
