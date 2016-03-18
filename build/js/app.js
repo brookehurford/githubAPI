@@ -4,10 +4,19 @@ exports.apiKey = "4814bf6eccf203b472de472aedcf9dd16c5cc922";
 },{}],2:[function(require,module,exports){
 var apiKey = require('./../.env').apiKey;
 
+exports.getUserRepo = function(){
+  var inputtedUsername = $('input#username').val();
+  $.get('https://api.github.com/users/'+ inputtedUsername + '?access_token=' + apiKey).then(function(response){
+    console.log(response);
+    $('.userInfo').append('<a href="' + response.html_url + '">' + response.name + '</a>' + response.location + '<img src="' + response.avatar_url + '">');
+  }).fail(function(error){
+    console.log(error.responseJSON.message);
+  });
+}
+
 exports.getRepos = function(){
   var inputtedUsername = $('input#username').val();
-  $.get('https://api.github.com/users/'+ inputtedUsername + '/repos?access_token=' + apiKey + '&per_page=1000').then(function(response){
-    console.log(response);
+  $.get('https://api.github.com/users/'+ inputtedUsername + '/repos?access_token=' + apiKey + '&per_page=1000&sort=update').then(function(response){
     for (var i = 0; i < response.length; i++) {
       $('ul.resultsList').append('<ul class="resultsItem"><li>' + '<span class="fullName">' + response[i].full_name + '</span></li>' +
                                  '<li>' + response[i].description + '</li>' +
@@ -19,13 +28,18 @@ exports.getRepos = function(){
 };
 
 },{"./../.env":1}],3:[function(require,module,exports){
+var getUserRepo = require('./../js/github.js').getUserRepo;
 var getRepos = require('./../js/github.js').getRepos;
 var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
+  $(".userInfo").hide();
   $('form#githubSearch').submit(function(event){
+    $(".userInfo").show();
     $('ul.resultsList').empty();
+    $('.userInfo').empty();
     event.preventDefault();
+    var newUserRepo = new getUserRepo();
     var newRepo = new getRepos();
   })
 });
