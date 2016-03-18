@@ -2,21 +2,27 @@
 exports.apiKey = "4814bf6eccf203b472de472aedcf9dd16c5cc922";
 
 },{}],2:[function(require,module,exports){
-// var getRepo = require('./../js/github.js').getRepo;
+var apiKey = require('./../.env').apiKey;
+
+exports.getRepos = function(){
+  var inputtedUsername = $('input#username').val();
+  $.get('https://api.github.com/users/'+ inputtedUsername + '?access_token=' + apiKey).then(function(response){
+    console.log(response);
+    $('.searchResults').text(response.public_repos);
+  }).fail(function(error){
+    console.log(error.responseJSON.message);
+  });
+};
+
+},{"./../.env":1}],3:[function(require,module,exports){
+var getRepos = require('./../js/github.js').getRepos;
 var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
   $('form#githubSearch').submit(function(event){
     event.preventDefault();
-    var inputtedUsername = $('input#username').val();
-
-    $.get('https://api.github.com/users/'+ inputtedUsername + '?access_token=' + apiKey).then(function(response){
-      console.log(response);
-      $('.searchResults').text(response.public_repos);
-    }).fail(function(error){
-      console.log(error.responseJSON.message);
-    });
+    var newRepo = new getRepos();
   })
 });
 
-},{"./../.env":1}]},{},[2]);
+},{"./../.env":1,"./../js/github.js":2}]},{},[3]);
