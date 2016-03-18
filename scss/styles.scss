@@ -1,8 +1,16 @@
 $primary: slategrey;
 
-body {
-  background: seashell;
+%headerFont {
   font-family: 'Lora', serif;
+}
+
+%bodyFont {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  @extend %bodyFont;
+  background: seashell;
 }
 
 .container {
@@ -12,23 +20,50 @@ body {
   flex-direction: column;
 }
 
+.headerContent {
+  @extend %headerFont;
+  text-align: center;
+}
+
+.submitBtn {
+  background-color: $primary;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 4%;
+}
+
 #githubSearch {
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 60%;
   label {
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: normal;
+    margin-bottom: 2%;
   }
-  input {
-    width: 300px;
-  }
-  button {
-    width: 100px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 4%;
+  input[type="text"] {
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+    outline: 0px !important;
+    -webkit-appearance: none;
+    &:focus {
+      border: solid 1px #707070;
+      box-shadow: 0 0 5px 1px #969696;
+    }
   }
 }
 
@@ -38,6 +73,7 @@ ul {
   margin: 4% auto;
   list-style-type: none;
   width: 100%;
+  border-radius: 10px;
   li {
       width: 100%;
     font-size: 15px;
